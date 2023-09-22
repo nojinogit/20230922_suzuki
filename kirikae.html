@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切り替えタブ</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-bind:class="{select: selected === 1, usually: selected !==1}" @click="change1">タブ1</button>
+        <button v-bind:class="{select:selected===2,usually:selected!==2}" @click="change2">タブ2</button>
+        <button v-bind:class="{select:selected===3,usually:selected!==3}" @click="change3">タブ3</button>
+        <p>{{contents}}</p>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                contents:'コンテンツ1',
+                selected:1
+            },
+            methods: {
+                change1: function () {
+                    this.contents='コンテンツ1';
+                    this.selected = 1;
+                },
+                change2: function () {
+                    this.contents = 'コンテンツ2';
+                    this.selected = 2;
+                },
+                change3: function () {
+                    this.contents = 'コンテンツ3';
+                    this.selected = 3;
+                },
+            }
+        })
+    </script>
+    <style>
+        .usually {
+            width:100px;
+            background-color: white;
+        }
+        .select {
+            width:100px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</body>
+
+</html>

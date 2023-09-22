@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モーダルウインドウ
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" :class="{gray: background === 1}" @click.self="close">
+        <button @click="open">開く</button>
+        <div v-show="isShow" class="modal-box">
+            <p class="modal-p">モーダルウインドウ</p>
+            <button @click="close">閉じる</button>
+        </div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                isShow: false,
+                background:0,
+            },
+            methods: {
+                open: function () {
+                    this.isShow=true;
+                    this.background = 1;
+                },
+                close: function () {
+                    this.isShow = false;
+                    this.background = 0;
+                }
+            }
+        })
+    </script>
+    <style>
+        .gray {
+            background-color: gray;
+        }
+        #app {
+            height:100vh;
+            width: 100vw;
+        }
+        .modal-box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20%;
+            height: 150px;
+            background-color: white;
+            text-align: center;
+        }
+        .modal-p{
+            margin-top: 50px;
+            font-weight: bold;
+        }
+    </style>
+</body>
+
+</html>
